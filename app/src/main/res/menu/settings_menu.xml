@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/profileFav" android:title="Your favourites" android:icon="@drawable/profile_fav" app:showAsAction="always"/>
+    <item android:id="@+id/profilePayment" android:title="Payment" android:icon="@drawable/profile_pavment" app:showAsAction="always"/>
+    <item android:id="@+id/profileHelp" android:title="Help" android:icon="@drawable/profile_help" app:showAsAction="always"/>
+    <item android:id="@+id/profilePromotion" android:title="Promotions" android:icon="@drawable/profile_promotion" app:showAsAction="always"/>
+    <item android:id="@+id/profileDeliver" android:title="Deliver with Uber" android:icon="@drawable/profile_deliver" app:showAsAction="always"/>
+    <item android:id="@+id/profileSettings" android:title="Settings" android:icon="@drawable/profile_setting" app:showAsAction="always"/>
+
+</menu>

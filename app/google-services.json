@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "585448853979",
+    "firebase_url": "https://clonningubereats.firebaseio.com",
+    "project_id": "clonningubereats",
+    "storage_bucket": "clonningubereats.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585448853979:android:249573a56343f3ad",
+        "android_client_info": {
+          "package_name": "com.example.clonningubereats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "585448853979-3dpe8bq12v77ofdvc22f94lvo6ti0u4b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.clonningubereats",
+            "certificate_hash": "ce68d7e72682a1b6e945a1639ea0dde11431b246"
+          }
+        },
+        {
+          "client_id": "585448853979-eg830cgtv1vu81vjrplu1fk811t6fln1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBWs-TekhRdH6mVeMe-z_5s3CK-gKuLYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585448853979-eg830cgtv1vu81vjrplu1fk811t6fln1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

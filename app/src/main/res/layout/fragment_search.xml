@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchFragment"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="4dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/searchTb"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search restaurants"
+                android:textColor="@color/black"/>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+    <EditText
+        android:id="@+id/searchEtext"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchTb"
+        android:hint="Search for a restaurant or dish"
+        android:drawableStart="@drawable/search"
+        android:paddingHorizontal="10dp"
+        android:background="@color/grey"
+        android:drawablePadding="10dp"
+        android:drawableEnd="@drawable/back"
+        android:layout_marginTop="1dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchRview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_bias="0.0"
+        android:paddingTop="20dp"
+        android:paddingHorizontal="10dp"
+        />
+
+
+
+
+
+<!--
+    <TextView
+        android:id="@+id/searchDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="x"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/searchEtext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/searchEtext"
+        app:layout_constraintVertical_bias="0.0"
+        />
+-->
+
+
+</LinearLayout>
