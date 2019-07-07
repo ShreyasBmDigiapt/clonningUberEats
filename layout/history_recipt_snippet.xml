@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <TableRow
+        android:weightSum="2"
+        android:padding="10dp">
+
+        <TextView
+            android:text="Subtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+        <TextView
+            android:id="@+id/hOrderSubtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="jhdsjhdsjbc"
+            android:layout_column="2"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+           android:layout_gravity="end"
+            android:textAlignment="textEnd"/>
+    </TableRow>
+
+    <TableRow
+        android:weightSum="2"
+        android:padding="10dp">
+
+        <TextView
+            android:text="Discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+        <TextView
+            android:id="@+id/hOrderDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="jhdsjhdsjbc"
+            android:layout_column="2"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_gravity="end"
+            android:textAlignment="textEnd"
+            android:textColor="@color/red"/>
+    </TableRow>
+
+    <TableRow
+        android:weightSum="2"
+        android:padding="10dp">
+
+        <TextView
+            android:text="Tax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+        <TextView
+            android:id="@+id/hOrderTax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="jhdsjhdsjbc"
+            android:layout_column="2"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_gravity="end"
+            android:textAlignment="textEnd"/>
+    </TableRow>
+
+    <TableRow
+        android:weightSum="2"
+        android:padding="10dp">
+
+        <TextView
+            android:text="Delivery Fee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+        <TextView
+            android:id="@+id/hOrderDeliverFee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="jhdsjhdsjbc"
+            android:layout_column="2"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_gravity="end"
+            android:textAlignment="textEnd"/>
+    </TableRow>
+
+
+</TableLayout>
