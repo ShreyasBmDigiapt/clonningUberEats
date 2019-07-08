@@ -9,7 +9,7 @@
 
     </style>
     
-    <style name="BottomNavTheme" parent="Theme.AppCompat.Light">
+    <style name="BottomNavThem" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/active_tab_color</item>
     </style>
 

@@ -37,7 +37,7 @@
             android:clickable="true"
             android:longClickable="true"
             android:pointerIcon="text"
-            android:theme="@style/BottomNavTheme"
+            android:theme="@style/BottomNavThem"
             app:itemBackground="@color/white"
             app:itemIconSize="@dimen/nav_bar_icon"
             app:labelVisibilityMode="unlabeled"
