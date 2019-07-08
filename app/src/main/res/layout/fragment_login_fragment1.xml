@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:weightSum="10"
     tools:context=".login.loginFragments.LoginFragment1">
@@ -18,29 +19,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingHorizontal="20dp"
+        android:padding="20dp"
         android:background="@color/white"
-        android:layout_weight="8">
+        android:layout_weight="7">
 
         <TextView
-            android:id="@+id/loginText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome"
-            android:layout_marginTop="15dp"
-            android:textSize="20sp"/>
+            android:text="Lets get started"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"/>
 
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:id="@+id/loginLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:orientation="horizontal"
+            android:background="@drawable/border">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:ccpClickable="false"
+                android:clickable="false" />
 
             <EditText
+                android:id="@+id/etNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border"
-                android:paddingLeft="8dp"/>
+                android:hint="number"
+                android:inputType="number"
+                android:paddingLeft="5dp"
+                android:clickable="true"
+                android:focusable="false"/>
+
+
         </LinearLayout>
     </LinearLayout>
 

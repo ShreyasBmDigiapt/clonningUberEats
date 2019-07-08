@@ -10,9 +10,18 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/orpRL">
 
-        <Toolbar
+        <ProgressBar
+            android:id="@+id/otpPB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"/>
+
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/otpTT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -26,6 +35,7 @@
             android:paddingHorizontal="20dp">
 
             <TextView
+                android:id="@+id/otpTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Enter the 4-digit code sent you at =91 9496685775. Did you enter the correct mobile number?"
@@ -85,6 +95,7 @@
             android:text="How would you like to recive your code?" />
 
         <Button
+            android:id="@+id/otpResend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -92,6 +103,7 @@
             android:text="RESEND CODE" />
 
         <Button
+            android:id="@+id/otpCancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

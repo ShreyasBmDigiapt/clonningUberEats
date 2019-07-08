@@ -1,7 +1,9 @@
 package com.example.clonningubereats.login.loginFragments;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,9 @@ import com.example.clonningubereats.R;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.hbb20.CountryCodePicker;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class NumberFragment2 extends Fragment {
@@ -24,13 +29,18 @@ public class NumberFragment2 extends Fragment {
     private Toolbar mFrag2Tb;
     private EditText mEtNumber;
     private Button mFrag2BtnNext;
+    private static final String TAG = "NumberFragment21";
 
-    private Boolean b=true;
+    private Boolean b = true;
 
     private FragmentTransaction transaction;
 
     private PhoneAuthProvider authProvider;
-    private String phoneNumber;
+    private CountryCodePicker mCCP;
+
+    private OtpFragment3 fragment3;
+    private  Bundle args;
+
 
 
     @Override
@@ -48,12 +58,14 @@ public class NumberFragment2 extends Fragment {
         mFrag2Tb = view.findViewById(R.id.frag2Tb);
         mEtNumber = view.findViewById(R.id.etNumber);
         mFrag2BtnNext = view.findViewById(R.id.frag2BtnNext);
+        mCCP = view.findViewById(R.id.ccp);
+
+        args = new Bundle();
 
         mFrag2Tb.setNavigationIcon(R.drawable.back);
 
         authProvider = PhoneAuthProvider.getInstance();
-        phoneNumber = mEtNumber.getText().toString();
-
+        transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
         mFrag2Tb.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,42 +75,41 @@ public class NumberFragment2 extends Fragment {
             }
         });
 
-        nextClick();
+        mFrag2BtnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextClick();
+            }
+        });
+
+
         return view;
     }
 
     private void nextClick() {
-        transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        mFrag2BtnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        final String phoneNumber =mCCP.getFullNumberWithPlus()+mEtNumber.getText().toString();
+        Log.d(TAG, "nextClick: "+phoneNumber);
+        if (phoneNumber.isEmpty()) {
+            mEtNumber.setError("Enter your number");
+            mEtNumber.requestFocus();
+        } else if (b) {
+            fragment3 = new OtpFragment3();
+            args.putString("phoneNumber", phoneNumber);
+            fragment3.setArguments(args);
+            transaction.replace(R.id.mainFrame, fragment3);
+            transaction.addToBackStack("frag2");
+            transaction.commit();
 
 
-                if (b) {
-                    transaction.replace(R.id.mainFrame, new OtpFragment3());
-                    transaction.addToBackStack("frag2");
-                    transaction.commit();
-                }else {
-                    transaction.replace(R.id.mainFrame, new PassFragment4());
-                    transaction.addToBackStack("frag2");
-                    transaction.commit();
-                }
-            }
-        });
+        } else {
+            transaction.replace(R.id.mainFrame, new PassFragment4());
+            transaction.addToBackStack("frag2");
+            transaction.commit();
+        }
     }
 
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-        @Override
-        public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-
-        }
-
-        @Override
-        public void onVerificationFailed(FirebaseException e) {
-
-        }
-    };
-
-
-
 }
+
+
+
+

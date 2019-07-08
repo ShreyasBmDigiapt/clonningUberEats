@@ -14,6 +14,7 @@ public class MainModel {
 
     //ViewPager
    private ArrayList<ImageObjects> imageList;
+   private int position;
 
     public MainModel(int viewType, ArrayList<ImageObjects> imageList) {
         this.viewType = viewType;

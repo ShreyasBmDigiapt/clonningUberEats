@@ -18,6 +18,7 @@ import com.example.clonningubereats.history_fragment.HistoryViewReciptFragment;
 import com.example.clonningubereats.R;
 import com.example.clonningubereats.modelClass.HistoryItems;
 import com.example.clonningubereats.modelClass.HistoryRvPosition;
+import com.example.clonningubereats.modelClass.OfferMainImagePosition;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class HistoryRvAdapter extends RecyclerView.Adapter<HistoryRvAdapter.Hist
 
     private ArrayList<HistoryItems> mList;
     private Context context;
-    private HistoryRvPosition posiition;
+    private OfferMainImagePosition posiition;
 
     public HistoryRvAdapter(ArrayList<HistoryItems> mList, Context context) {
         this.mList = mList;
@@ -51,10 +52,6 @@ public class HistoryRvAdapter extends RecyclerView.Adapter<HistoryRvAdapter.Hist
         holder.mHistoryOrderName.setText(items.getHistoryOrderName());
         holder.mHistoryDeliverMan.setText(items.getHistoryDeliverMan());
         holder.mHistoryOrderTotal.setText(items.getHistoryOrderTotal());
-
-
-
-        posiition = posiition;
 
         holder.mBtnViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override

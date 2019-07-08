@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +27,7 @@ public class MainAdapter extends RecyclerView.Adapter {
     private Context context;
     private ArrayList<MainModel> mList;
     private static final String TAG = "MainAdapter1";
+    private int pos;
 
 
     public MainAdapter(Context context, ArrayList<MainModel> mList) {
@@ -35,6 +37,7 @@ public class MainAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int position) {
+//        Log.d(TAG, "getItemViewType: "+position);
         switch (mList.get(position).getViewType()) {
             case 0000:
                 return VIEWPAGER;
@@ -58,30 +61,33 @@ public class MainAdapter extends RecyclerView.Adapter {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view;
 
-        switch (viewType) {
-            case VIEWPAGER:
-                view = inflater.inflate(R.layout.view_pager, parent, false);
-                holder = new UberHolder.ViewPagerImage(view);
-                break;
+            switch (viewType) {
 
-            case SINGLE_RV:
-                view = inflater.inflate(R.layout.snippet_restro, parent, false);
-                holder = new UberHolder.RestroCardHolder(view);
-                break;
+                case VIEWPAGER:
+                    view = inflater.inflate(R.layout.view_pager, parent, false);
+                    holder = new UberHolder.ViewPagerImage(view);
+                    break;
+
+                case SINGLE_RV:
+                    view = inflater.inflate(R.layout.snippet_restro, parent, false);
+                    holder = new UberHolder.RestroCardHolder(view);
+                    break;
 
 
-            case MUILTIPLE_RV:
-                view = inflater.inflate(R.layout.restro_recycler_view, parent, false);
-                holder = new UberHolder.Holder(view);
-                break;
+                case MUILTIPLE_RV:
+                    view = inflater.inflate(R.layout.restro_recycler_view, parent, false);
+                    holder = new UberHolder.Holder(view);
+                    break;
 
-        }
+            }
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+        pos = position;
 
+        Log.d(TAG, "onBindViewHolder: " + position);
 
         switch (holder.getItemViewType()) {
             case VIEWPAGER:
@@ -91,7 +97,7 @@ public class MainAdapter extends RecyclerView.Adapter {
 
             case SINGLE_RV:
                 UberHolder.RestroCardHolder rHolder1 = (UberHolder.RestroCardHolder) holder;
-                Log.d(TAG, "onBindViewHolder: " + mList.size());
+//                Log.d(TAG, "onBindViewHolder: " + mList.size());
                 configViewHolder1(rHolder1, (MainModel) mList.get(position));
                 break;
 
@@ -128,11 +134,8 @@ public class MainAdapter extends RecyclerView.Adapter {
         holder.mRecyclerView.setAdapter(adapter);
     }
 
-
     @Override
     public int getItemCount() {
-        Log.d(TAG, "getItemCount: " + mList.size());
         return mList.size();
     }
-
 }

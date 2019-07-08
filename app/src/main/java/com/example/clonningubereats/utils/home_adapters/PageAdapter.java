@@ -24,6 +24,7 @@ public class PageAdapter extends PagerAdapter {
     public PageAdapter(ArrayList<ImageObjects> images, Context context) {
         this.images = images;
         this.context = context;
+
     }
 
 
