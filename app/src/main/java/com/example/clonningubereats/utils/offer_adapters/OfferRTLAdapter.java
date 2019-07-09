@@ -22,7 +22,7 @@ public class OfferRTLAdapter extends RecyclerTabLayout.Adapter<OfferRTLAdapter.R
     private OfferPagerAdapter mAdapter;
     private static final String TAG = "OfferRTLAdapter1";
     private Context context;
-    private int position;
+    private OfferMainImagePosition position;
 
 
     public OfferRTLAdapter(ViewPager viewPager) {
@@ -61,11 +61,14 @@ public class OfferRTLAdapter extends RecyclerTabLayout.Adapter<OfferRTLAdapter.R
             super(itemView);
             mRTLText = itemView.findViewById(R.id.RTLText);
 
+//            position.getTabPosition(getAdapterPosition());
             Log.d(TAG, "RTLHolder: "+getAdapterPosition());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     getViewPager().setCurrentItem(getAdapterPosition());
+                    Log.d(TAG, "onClick: "+getAdapterPosition());
+
 
                 }
             });

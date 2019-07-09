@@ -31,8 +31,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
@@ -95,7 +97,7 @@ public class OtpFragment3 extends Fragment {
         phoneNumber = getArguments().getString("phoneNumber");
 
         mOtpTitle.setText("Enter the 4-digit code sent you " + phoneNumber);
-
+        Log.d(TAG, "onCreateView: "+phoneNumber);
         mOtpTT.setNavigationIcon(R.drawable.back);
         mOtpTT.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,6 +152,7 @@ public class OtpFragment3 extends Fragment {
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
             String code = phoneAuthCredential.getSmsCode();
 
+            Log.d(TAG, "onVerificationCompleted: "+code);
             if (code != null) {
                 mEtOtp.setText(code);
             } else {
@@ -165,6 +168,17 @@ public class OtpFragment3 extends Fragment {
         public void onVerificationFailed(FirebaseException e) {
             Log.d(TAG, "onVerificationFailed: " + e.getMessage());
             Toast.makeText(getActivity(), "Invalid Number or try agian later", Toast.LENGTH_SHORT).show();
+
+            if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                Log.d(TAG, "onVerificationFailed: "+e.getMessage());
+                // Invalid request
+                // ...
+            } else if (e instanceof FirebaseTooManyRequestsException) {
+                Log.d(TAG, "onVerificationFailed: "+e.getMessage());
+                // The SMS quota for the project has been exceeded
+                // ...
+            }
+
             getFragmentManager().popBackStack();
 
         }
@@ -172,13 +186,14 @@ public class OtpFragment3 extends Fragment {
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
+            Log.d(TAG, "onCodeSent: "+s);
+            Log.d(TAG, "onCodeSent: "+mResndToken);
             mVerificationId = s;
             mResndToken = forceResendingToken;
         }
     };
 
-    private void verifyVerificationCode(String code) {
-
+    private void verifyVerificationCode(final String code) {
 
         mOtpBtnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,6 +203,9 @@ public class OtpFragment3 extends Fragment {
                     mEtOtp.setError("OTP");
                 } else {
                     final PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, mEtOtp.getText().toString());
+                    mEtOtp.setFocusable(false);
+                    mOtpBtnNext.setClickable(false);
+                    mOtpRl.setBackground(getResources().getDrawable(R.color.trans_black));
                     mOtpPB.setVisibility(View.VISIBLE);
                     signInWithCredential(credential);
                 }
@@ -201,12 +219,9 @@ public class OtpFragment3 extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 Log.d(TAG, "onComplete: " + task.isSuccessful());
                 if (task.isSuccessful()) {
-                    mEtOtp.setFocusable(false);
-                    mOtpBtnNext.setClickable(false);
                     mOtpPB.setVisibility(View.GONE);
-                    mOtpRl.setBackground(getResources().getDrawable(R.color.trans_black));
                     startActivity(new Intent(getActivity(), SplashScreen.class));
-                    getActivity().getSupportFragmentManager().popBackStackImmediate();
+                    getActivity().finish();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {

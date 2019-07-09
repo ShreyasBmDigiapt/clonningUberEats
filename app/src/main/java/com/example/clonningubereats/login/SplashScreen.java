@@ -38,8 +38,10 @@ public class SplashScreen extends AppCompatActivity {
             runnable1 = new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     finish();
+                    getSupportFragmentManager().popBackStackImmediate();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
                 }
             };
             handler1 = new Handler();
@@ -49,8 +51,9 @@ public class SplashScreen extends AppCompatActivity {
             runnable1 = new Runnable() {
                 @Override
                 public void run() {
-                    startActivity(new Intent(getApplicationContext(), LoginActivty.class));
                     finish();
+                    startActivity(new Intent(getApplicationContext(), LoginActivty.class));
+
                 }
             };
             handler1 = new Handler();

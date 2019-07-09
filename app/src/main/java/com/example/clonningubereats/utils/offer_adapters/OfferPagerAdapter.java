@@ -30,7 +30,7 @@ public class OfferPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         OfferRvFragment fragment = new OfferRvFragment(mList.get(position).getOfferItems());
-        Log.d(TAG, "getItem: "+position);
+        Log.d(TAG, "getItem: ");
         return fragment;
     }
 
@@ -42,7 +42,7 @@ public class OfferPagerAdapter extends FragmentStatePagerAdapter {
 
     //get tab_item
     public RTL_model get_item(int position) {
-//        Log.d(TAG, "get_item: "+position);
+        Log.d(TAG, "get_item: "+getCount());
         return mList.get(position);
     }
 

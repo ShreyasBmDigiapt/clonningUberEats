@@ -38,8 +38,10 @@ public class ProfileFragmnet extends Fragment {
             @Override
             public void onClick(View view) {
                 auth.signOut();
+                getActivity().finish();
                 startActivity(new Intent(getActivity(), LoginActivty.class));
-                getFragmentManager().popBackStackImmediate();
+
+
             }
         });
         return  view;
